@@ -86,7 +86,8 @@ var limitApproved= false
 
 xhr.onreadystatechange = function() {
 
-       if (this.readyState == 4 && this.status == 200) {
+       if (this.readyState == 4) { 
+        if( this.status == 200){
         console.log("CHAMOU1")
         const obj = JSON.parse(this.response)
         if(obj["limitApproved"]===true){
@@ -101,6 +102,8 @@ xhr.onreadystatechange = function() {
 
         console.log(obj["customerId"])
         console.log(obj["organizationId"])
+       }}else{
+        window.location.replace("./pageERROR.html")
        }
      };
    
